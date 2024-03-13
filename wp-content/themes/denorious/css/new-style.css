@@ -1,0 +1,530 @@
+/*
+// #Politics CSS
+// --------------------------------------------------
+*/
+
+
+.candidate h3{
+	color: #246aa8 !important;
+}
+
+.candidate h2{
+	color: #246aa8 !important;
+}
+
+.red-color{
+	color: #cc0a21;
+}
+
+.candidate_subheading{
+	color: #464641 !important;
+}
+
+.cl li i {
+    color: #ca1717 !important;
+    position: relative !important;
+    left: 0 !important;
+    top: 0px !important;
+}
+
+.vbtn:hover {
+    background: transparent;
+    color: #CC0A21 !important;
+    border: 2px solid #CC0A21 !important;
+}
+
+.btn2:hover {
+    background: transparent;
+    color: #CC0A21 !important;
+    border: 2px solid #CC0A21 !important;;
+}
+
+.campain-news{
+	position: relative;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.campain-news h4 {
+    font-size: 22px;
+    margin: 0px 0 0;
+    color: #222;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.campain-news h4 a {
+    color: #222;
+    text-decoration: none;
+}
+
+.campain-news p {
+    margin: 10px 0 0;
+    line-height: 26px;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.campain-news .group .btn {
+    margin: 0px auto 0 auto;
+    padding: 0 30px;
+    display: block;
+    width: 146px;
+}
+
+.campain-news-listing{
+	position: relative;
+}
+
+.campain-news-listing h5 {
+    color: #222;
+    font-size: 22px;
+    padding-bottom: 10px;
+}
+
+.campain-news-listing li {
+    display: table;
+    margin-bottom: 20px;
+}
+
+.campain-news-listing li img {
+    float: left;
+    margin: 0 18px 0 0;
+    width: 85px;
+    height: 80px;
+    -webkit-border-radius: 1.7px/1.45px;
+    -moz-border-radius: 1.7px/1.45px;
+    border-radius: 1.7px/1.45px;
+}
+
+.campain-news-listing li .inner {
+    overflow: hidden;
+    margin: 4px 0 0;
+    position: relative;
+}
+
+.campain-news-listing li .inner .meta {
+    text-align: left;
+    font-family: Arimo;
+}
+
+.campain-news-listing li .inner .meta a {
+    font-size: 12px;
+    text-align: left;
+}
+
+.campain-news-listing li .inner h4 {
+    margin: 11px 0 0;
+    color: #232323;
+    font-family: Montserrat, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 19px;
+}
+
+.campain-news-listing li .inner h4 a {
+    color: #232323;
+}
+
+.campain-news-listing a{
+    color: #312d2d;	
+}
+
+.welfare-programs .political-bg-img>img{
+	overflow: hidden;
+	height: 360px;
+	width: 100%;
+	max-width: 100%;
+    transform: scale(1);
+    transition: .4s;
+    -webkit-transform:scale(1);
+    -webkit-transition: .4s;	
+}
+
+.welfare-programs .political-bg-img>img:hover{
+	transform: scale(1.1);
+	transition: .8s;
+    -webkit-transform:scale(1.1);
+    -webkit-transition: .8s;	
+}
+
+.political-news{
+    text-align: justify;
+    padding-bottom: 5px;  
+}
+
+.political-news h3{
+	color: #CC0A21;
+    padding-bottom: 5px; 
+    text-transform: uppercase;     
+}
+
+.political-news h3 span {
+    font-size: 29px;   
+}
+
+.political-news .subheading{
+    margin-bottom: 17px;
+    color: #222222;
+    font-family: Poppins, sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 40px;    
+}
+
+
+
+/************ Team *****************/
+
+.sc_team_item {
+    overflow:hidden;
+}
+
+.sc_team_item h3 {
+    font-size:24px;
+    margin-top: 0;
+    margin-bottom: 0.8em;
+}   
+
+.sc_team_item img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}   
+
+.sc_team_item .sc_team_item_info {
+    background-color: #fff;
+    padding: 1.9em 0;
+    text-align: center;
+}
+.sc_team_item .sc_team_item_info .sc_team_item_title {
+    margin:0 0 5px;
+    font-size:1.125em;
+}
+
+.sc_team_item .sc_team_item_title a {
+    color: #363842;
+    font-size:24px;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.sc_team_item .sc_team_item_title a:hover{
+    color: #ff554c;
+    text-decoration: none;
+}    
+
+.sc_team_item .sc_team_item_position{
+    color: #3598db;
+}
+
+.sc_team_item .sc_team_item_info .sc_team_item_description {
+    display: none;
+    height:3.3em;
+    margin-top:1em;
+    overflow:hidden;
+}
+
+.sc_team_item .sc_team_item_info .sc_socials {margin-top:15px;}
+.sc_team_item .sc_team_item_avatar{
+    width: 100%;
+    height: 300px;  
+}
+
+.sc_team_item .sc_team_item_avatar img {
+
+}
+
+@media only screen and (min-width: 250px) and (max-width: 767px) {
+    .sc_team_item .sc_team_item_avatar img {
+        width: 100%;
+        height: auto !important;
+    }
+
+    .sc_team_item img {
+        max-width: 100%;
+        height: auto !important;
+        vertical-align: top;
+    }                       
+}
+
+.sc_team_style_1 .sc_team_item .sc_team_item_avatar {
+    position: relative;
+    z-index: 0;
+}
+
+.sc_team_style_1 .sc_team_item .sc_team_item_info {
+    padding: 0;
+    position:relative;
+    z-index: 5;
+}
+
+.sc_team_style_1 .sc_team_item .sc_team_inner {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.sc_team_style_1 .sc_team_item:hover .sc_team_inner {
+
+}
+
+.sc_socials {
+    overflow:hidden;
+    display:inline-block;
+    line-height:1em;
+}
+.sc_socials .sc_socials_item {
+    display:inline-block;
+    margin: 0 0.25em 0 0;
+    outline:none;
+}       
+
+.sc_socials.sc_socials_size_small a{
+    text-decoration: none;
+}
+
+.sc_socials.sc_socials_size_small a,
+.sc_socials.sc_socials_size_small a .sc_socials_hover {
+    width:44px;
+    height:44px;
+    background-position: 0 -2.5em;
+    -webkit-background-size: 2.5em 5em;
+    -moz-background-size: 2.5em 5em;
+    -o-background-size: 2.5em 5em;
+    background-size: 2.5em 5em;
+}       
+
+.sc_socials.sc_socials_size_small a.icons i {
+    color: #454545;
+    font-size: 14px;
+    height: 44px;
+    line-height: 44px;
+    width: 44px;
+    text-decoration: none;
+}
+
+.sc_socials a.icons .fa-facebook:hover {
+    color: #FFFFFF;
+    background-color: #496eb5;
+    border-radius: 50px;
+    -webkit-border-radius:50px;
+    -webkit-transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;
+    transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;         
+}
+
+.sc_socials a.icons .fa-twitter:hover {
+    color: #FFFFFF;
+    background-color: #1ab2e8;
+    border-radius: 50px;
+    -webkit-border-radius:50px;
+    -webkit-transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;
+    transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;         
+}       
+
+.sc_socials a.icons .fa-linkedin:hover {
+    color: #FFFFFF;
+    background-color: #0077B5;
+    border-radius: 50px;
+    -webkit-border-radius:50px;
+    -webkit-transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;
+    transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;         
+}       
+
+.sc_socials a.icons .fa-google-plus:hover {
+    color: #FFFFFF;
+    background-color: #DF4B37;
+    border-radius: 50px;
+    -webkit-border-radius:50px;
+    -webkit-transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;
+    transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;         
+}       
+
+.sc_socials a.icons .fa-youtube:hover {
+    color: #FFFFFF;
+    background-color: #CC181E;
+    border-radius: 50px;
+    -webkit-border-radius:50px;
+    -webkit-transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;
+    transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;         
+}   
+
+.sc_socials a.icons .fa-facebook:hover:after {
+    -webkit-box-shadow: 0 0 0 0 transparent inset;
+    box-shadow: 0 0 0 0 transparent inset;
+}
+
+.sc_socials a.icons .fa-dribbble:hover {
+    color: #FFFFFF;
+    background-color: #e04c86;
+    border-radius: 50px;
+    -webkit-border-radius:50px;
+    -webkit-transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;
+    transition: box-shadow 0.3s ease-in-out 0s, background-color 0.2s ease-in-out 0.1s;         
+} 
+
+
+/********** Featured Text ****************/
+
+.featured-text  {
+    background: #fff;
+    position: relative;
+    padding: 0;      
+}
+
+@media all and (max-width: 768px){
+    .featured-text  {
+        padding: 0px 15px;
+    }
+
+    .political-news{
+        padding: 20px 30px;
+    }
+
+    .top-section .col-sm-4{
+        height: 236px;
+    }
+}
+
+.featured-text .footer-video {
+
+    height: 292px;
+    background: #000 url(./../images/dbtf.png) no-repeat center center;
+    position: relative;
+}
+
+.featured-text .list li i {
+    color: #CC0A21;   
+}
+
+h2.h2-custom-heading3 {
+    margin-bottom: 10px;
+}
+footer .tagcloud a {
+    background: #444444;
+    color: #fff;
+}
+/*browseallmenu*/
+.header-bottom .browseallicon {
+    display: inline;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    z-index: 999;
+    font-size: 30px;
+}
+.header-bottom .browseallicon a {
+    font-family: 'Montserrat' !important;
+	color: #333;
+	background-color: #fafafa;
+	box-sizing: border-box;
+	cursor: pointer;
+    float: right;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 12.5px 16px;
+    position: relative;
+    text-align: left;
+    text-transform: uppercase;
+    border-left: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+	line-height: 24px;
+	word-spacing: 2px;
+}
+.header-bottom .browseallicon a:focus, .header-bottom .browseallicon a:hover{
+	outline: 0;
+	text-decoration: none;
+}
+.header-bottom .browseallmenu {
+	display:none;
+	position: relative;
+    height: auto;
+    overflow: hidden;
+    z-index: 99;
+}
+.header-bottom .browseallmenu .wrap {
+	color:#e9e9e9;
+	text-align:center;
+	max-width: 50%;
+    margin: 0 0 0 auto;
+}
+.header-bottom .browseallmenu .wrap ul.wrap-nav {
+	text-transform:capitalize;
+    clear: both;
+	padding-left: 0;
+	border: 1px solid #ededed;
+    border-top: none;
+}
+.header-bottom .browseallmenu .wrap ul.wrap-nav li {
+	padding-top: 5px;
+    padding-bottom: 5px;
+}
+.header-bottom .browseallmenu .wrap ul.wrap-nav li ul li {
+	padding-top: 0;
+    padding-bottom: 0;
+}
+.header-bottom .main_menu_item {
+    overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: inset 0 0 0.0725rem #ececec;
+    box-shadow: inset 0 0 0.0725rem #ececec;
+    background: #fff;
+    min-height: 2.25rem;
+    padding-left: 15rem;
+}
+.header-bottom .main_menu_title {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 20%;
+    padding-left: 15px;
+    font-size: 11px;
+    line-height: 30px;
+	font-weight: 500;
+	font-family: 'Montserrat';
+    text-align: left;
+    float: left;
+	text-transform: uppercase;
+}
+.header-bottom .browseallmenu .wrap ul.wrap-nav a{
+	color: #000;
+}
+.header-bottom .browseallmenu .wrap ul.wrap-nav li ul {
+    padding-bottom: 0.1875rem;
+    padding-left: 10%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 2.25rem;
+    padding-top: 0.1875rem;
+    overflow: hidden;
+}
+.header-bottom .browseallmenu .wrap ul.wrap-nav li ul li a {
+    float: left;
+    line-height: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+    text-decoration: upp;
+    text-transform: uppercase;
+	font-weight: 600;
+}
+li.ballmenu-li a{
+	border-left: 1px solid #ccc;
+}
+ul li.ballmenu-li:first-child a{
+	border-left: none;
+	padding-left: 0;
+}
+/*ball-menu end*/
+.contact-inner a {
+	color: inherit;
+	text-decoration: none;
+}
