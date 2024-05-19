@@ -1,0 +1,5 @@
+/*This css file will add css styles in the Plugin*/
+input[type=checkbox], input[type=radio] {
+    margin: 5px 0 0;
+}
+.ft_contact p{margin-bottom: 0; color: #555;}
