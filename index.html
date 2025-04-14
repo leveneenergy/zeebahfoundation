@@ -194,7 +194,73 @@ h6 {
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC
-}</style>
+}
+
+/******Donate button on homepage****/
+.donate-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px; /* Reduced height for less vertical space */
+    width: 100%;
+    margin: 0; /* Remove any default margins */
+    padding: 10px 0; /* Minimal padding for breathing room */
+}
+
+.donate-button {
+    display: inline-block;
+    padding: 15px 35px; /* Slightly smaller padding for a compact look */
+    font-size: 22px; /* Slightly smaller font size */
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #92278F; /* Same vibrant color */
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px; /* Slightly smaller border radius */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); /* Lighter shadow */
+}
+
+.donate-button:hover {
+    background-color: #BF40BF;
+    transform: scale(1.05);
+}
+
+.donate-button:active {
+    transform: scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .donate-button-container {
+        min-height: 120px; /* Even less height on smaller screens */
+        padding: 8px 0;
+    }
+
+    .donate-button {
+        padding: 12px 30px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .donate-button-container {
+        min-height: 100px;
+        padding: 5px 0;
+    }
+
+    .donate-button {
+        padding: 10px 25px;
+        font-size: 18px;
+    }
+}
+
+.home-slider-1 {
+    min-height: 10px; }
+
+
+
+</style>
 <style type="text/css" data-type="vc_custom-css">.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
 Margin-right:0;
 }</style>
@@ -432,42 +498,24 @@ Margin-right:0;
 				});</script>
 </div></div></div></div>
 <div class="vc_row-full-width"></div>
-<div class="vc_row wpb_row vc_row-fluid ">
-<div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img fetchpriority="high" decoding="async" width="704" height="708" src="./wp-content/uploads/2024/05/SupportUs.jpeg" class="vc_single_image-img attachment-large" alt=", The Zeebah Foundation" title="SupportUs" srcset="./wp-content/uploads/2024/05/SupportUs.jpeg 704w, ./wp-content/uploads/2024/05/SupportUs-298x300.jpeg 298w, ./wp-content/uploads/2024/05/SupportUs-150x150.jpeg 150w" sizes="(max-width: 704px) 100vw, 704px"></div>
-		</div>
-	</div>
-</div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-		
-		<!-----GWR Video update begin	---->
-			<iframe width="550" height="300" src="https://www.youtube.com/embed/TMyI7zuvozI?autoplay=1"></iframe> 
-		<!-----GWR Video update end	---->	
-				
-<style>
-#myVideo {<br />  position: fixed;<br />  right: 0;<br />  bottom: 0;<br />  min-width: 100%;<br />  max-height: 100%;<br />}
-<p>@media(max-width: 640px){<br />  #myVideo {<br />    width: 100%;<br />  }<br />}<br /></style>
 
-		</div>
-	</div>
 
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p><span style="color: #000000;">Tuesday 26th November 2024 marked a groundbreaking moment in the world of art and disability awareness. 15-year-old Kanyeyachukwu Tagbo-Okeke, an autistic artist and student of The Zeebah Foundation commenced his attempt to break the GUINNESS WORLD RECORDS®  title for the Largest Art Canvas.
-				The current record, held by Emad Salehi, stands at 9,652sqm. Kanyeyachukwu’s canvas, measuring an impressive 12,300sqm will reflect his unique perspective, artistic talent, and unwavering passion for self-expression.
-				In addition to raising awareness for autism, Kanyeyachukwu is also using this record attempt, titled Impossibility is a Myth to raise funds for The Zeebah Foundation's proposed state-of-the-art Autism Resource Centre.</span><br>
-<span style="color: #000000;">Support us in making this vision a reality by contributing to our fundraising campaign. Your donation of any amount will bring us closer to achieving our goal of building this facility. We are grateful for your consideration.</span></p>
-<p><span style="color: #000000;">For more details &#128222; +234 (0) 703 804 1161&nbsp;</span></p>
-
-		</div>
-	</div>
-</div></div></div>
+<!-----Donate button in Homepage begins ---->
+<div class="vc_row wpb_row vc_row-fluid">
+    <div class="wpb_column vc_column_container vc_col-sm-12">
+        <div class="vc_column-inner">
+            <div class="wpb_wrapper">
+                <div class="donate-button-container">
+                    <a href="https://zeebahfoundation.com/buildingproject/index.html" class="donate-button">Donate Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-----Donate button in Homepage ends ---->
+
+
+
 <div class="vc_row wpb_row vc_row-fluid "><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
 	<div class="wpb_text_column wpb_content_element  vc_custom_1715780734279">
 		<div class="wpb_wrapper">
