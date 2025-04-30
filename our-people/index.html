@@ -19,6 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
 <link rel="alternate" type="application/rss+xml" title="The Zeebah Foundation &raquo; Feed" href="./../feed/index.html">
 <link rel="alternate" type="application/rss+xml" title="The Zeebah Foundation &raquo; Comments Feed" href="./../comments/feed/index.html">
+
 <script type="text/javascript">
 /* <![CDATA[ */
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":".\/\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.5.3"}};
@@ -26,6 +27,46 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 !function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
 /* ]]> */
 </script>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script>
 <link rel="stylesheet" id="denorious-fonts-arimo-css" href="https://fonts.googleapis.com/css?family=Arimo%3A400%2C400i%2C700%2C700i&#038;subset=latin%2Clatin-ext" type="text/css" media="all">
 <link rel="stylesheet" id="denorious-fonts-montserrat-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A100%2C200%2C300%2C300i%2C400%2C400i%2C500%2C600%2C700%2C800%2C900&#038;subset=latin%2Clatin-ext" type="text/css" media="all">
 <link rel="stylesheet" id="denorious-fonts-poppins-css" href="https://fonts.googleapis.com/css?family=Poppins%3A300%2C400%2C500%2C600%2C700&#038;subset=latin%2Clatin-ext" type="text/css" media="all">
@@ -46,7 +87,53 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 		vertical-align: -0.1em !important;
 		background: none !important;
 		padding: 0 !important;
-	}</style>
+	}
+	 .staff-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .staff-card {
+            flex: 0 0 calc(33.333% - 1rem);
+            max-width: calc(33.333% - 1rem);
+            text-align: center;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+        .staff-card img {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            object-fit: cover;
+        }
+        .staff-card h3 {
+            font-family: 'Shadows Into Light Two', cursive;
+            font-weight: 400;
+            margin: 0.5rem 0;
+            color: #515151;
+        }
+        .staff-card p {
+            margin: 0;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .staff-card {
+                flex: 0 0 calc(50% - 1rem);
+                max-width: calc(50% - 1rem);
+            }
+        }
+        @media (max-width: 576px) {
+            .staff-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+	
+	
+	
+	
+	</style>
 <link rel="stylesheet" id="wp-block-library-css" href="./../wp-includes/css/dist/block-library/style.min.css?ver=6.5.3" type="text/css" media="all">
 <style id="wp-block-library-inline-css" type="text/css">.has-text-align-justify{text-align:justify;}</style>
 <link rel="stylesheet" id="mediaelement-css" href="./../wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17" type="text/css" media="all">
@@ -402,296 +489,88 @@ h6 {
 					</div>
 	</div>
 </div>
-<div class="inner-content blog-single">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 no-padding">			
-								<div class="donation-causes dc-single">
-					
-					<div class="bialty-container"><div class="wpb-content-wrapper">
-<div class="vc_row wpb_row vc_row-fluid "><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><h2 style="color: #515151;text-align: center" class="vc_custom_heading">STAFF MEMBERS</h2></div></div></div></div>
-<div class="vc_row wpb_row vc_row-fluid ">
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img fetchpriority="high" decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/OLUWADAMILOLA-OLUKITIBI.jpg" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="OLUWADAMILOLA OLUKITIBI" srcset="./../wp-content/uploads/2018/10/OLUWADAMILOLA-OLUKITIBI.jpg 422w, ./../wp-content/uploads/2018/10/OLUWADAMILOLA-OLUKITIBI-150x150.jpg 150w, ./../wp-content/uploads/2018/10/OLUWADAMILOLA-OLUKITIBI-300x300.jpg 300w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Oluwadamilola Alawode</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Registered Behaviour Technician,<br>
-Qualified Autism Service Practitioner-Supervisor,</p>
-<p style="text-align: center;">International Behavior Analyst</p>
-<p style="text-align: center;">Clinical Supervisor</p>
-
-		</div>
-	</div>
-</div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/TUNDE-ALAWODE.jpg" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="TUNDE ALAWODE" srcset="./../wp-content/uploads/2018/10/TUNDE-ALAWODE.jpg 422w, ./../wp-content/uploads/2018/10/TUNDE-ALAWODE-150x150.jpg 150w, ./../wp-content/uploads/2018/10/TUNDE-ALAWODE-300x300.jpg 300w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Babatunde Alawode</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Registered Behaviour Technician (RBT)</p>
-
-		</div>
-	</div>
-</div></div></div>
-
-<!-------designation changed----->
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/Binaebi-Nabena.jpg" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="Binaebi-Nabena" srcset="./../wp-content/uploads/2018/10/Binaebi-Nabena.jpg 422w, ./../wp-content/uploads/2018/10/Binaebi-Nabena-150x150.jpg 150w, ./../wp-content/uploads/2018/10/Binaebi-Nabena-300x300.jpg 300w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Binaebi Nabena</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Special Education Coordinator & Verbal Communication Therapist</p>
-
-		</div>
-	</div>
-</div></div></div>
-<!-------designation changed----->
-</div>
-<div class="vc_row wpb_row vc_row-fluid ">
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/GODSFAVOUR-CHUKWUMA.jpg" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="GODSFAVOUR CHUKWUMA" srcset="./../wp-content/uploads/2018/10/GODSFAVOUR-CHUKWUMA.jpg 422w, ./../wp-content/uploads/2018/10/GODSFAVOUR-CHUKWUMA-150x150.jpg 150w, ./../wp-content/uploads/2018/10/GODSFAVOUR-CHUKWUMA-300x300.jpg 300w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Godsfavour Chukwuma</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Applied Behavior Analysis Technician</p>
-
-		</div>
-	</div>
-</div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2020/08/CARINE-OGBE.jpg" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="CARINE OGBE" srcset="./../wp-content/uploads/2020/08/CARINE-OGBE.jpg 422w, ./../wp-content/uploads/2020/08/CARINE-OGBE-300x300.jpg 300w, ./../wp-content/uploads/2020/08/CARINE-OGBE-150x150.jpg 150w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Carine Ogbe</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Behaviour Technician</p>
-
-		</div>
-	</div>
-</div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2020/08/CARINE-OGBE.jpg" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="SARATU BUBA" srcset="./../wp-content/uploads/2020/08/SARATU-BUBA.jpg" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="SARATU BUBA" srcset="./../wp-content/uploads/2020/08/SARATU-BUBA.jpg 421w, ./../wp-content/uploads/2020/08/SARATU-BUBA-300x300.jpg 300w, ./../wp-content/uploads/2020/08/SARATU-BUBA-150x150.jpg 150w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Saratu Buba</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Behaviour Technician</p>
-
-		</div>
-	</div>
-</div></div></div>
-</div>
-<div class="vc_row wpb_row vc_row-fluid ">
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="420" height="422" src="./../wp-content/uploads/2020/08/ESTHER-OSAWU.jpg" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="ESTHER OSAWU" srcset="./../wp-content/uploads/2020/08/ESTHER-OSAWU.jpg 420w, ./../wp-content/uploads/2020/08/ESTHER-OSAWU-300x300.jpg 300w, ./../wp-content/uploads/2020/08/ESTHER-OSAWU-150x150.jpg 150w" sizes="(max-width: 420px) 100vw, 420px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Esther Osawu</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Accounting Officer</p>
-
-		</div>
-	</div>
-</div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/Victoria-1-1.png" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="Victoria-1 (1)" srcset="./../wp-content/uploads/2018/10/Victoria-1-1.png 422w, ./../wp-content/uploads/2018/10/Victoria-1-1-300x300.png 300w, ./../wp-content/uploads/2018/10/Victoria-1-1-150x150.png 150w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Victoria Eko</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Behaviour Technician</p>
-
-		</div>
-	</div>
-</div></div></div>
-
-<!-----designation changed ----->
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_center">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/jonathan.png" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="jonathan" srcset="./../wp-content/uploads/2018/10/jonathan.png 422w, ./../wp-content/uploads/2018/10/jonathan-300x300.png 300w, ./../wp-content/uploads/2018/10/jonathan-150x150.png 150w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Jonathan Agum</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Special Educator & Verbal Communication Therapist</p>
-
-		</div>
-	</div>
-</div></div></div>
-<!-----designation changed ----->
 
 
-</div>
-<div class="vc_row wpb_row vc_row-fluid ">
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2023/07/Oghenetega-Akaphiare-1.png" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="Oghenetega Akaphiare 1" srcset="./../wp-content/uploads/2023/07/Oghenetega-Akaphiare-1.png 422w, ./../wp-content/uploads/2023/07/Oghenetega-Akaphiare-1-300x300.png 300w, ./../wp-content/uploads/2023/07/Oghenetega-Akaphiare-1-150x150.png 150w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Oghenetega Akaphiare</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Speech and Language Assistant</p>
 
-		</div>
-	</div>
-</div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_center">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/ephraim.png" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="ephraim" srcset="./../wp-content/uploads/2018/10/ephraim.png 422w, ./../wp-content/uploads/2018/10/ephraim-300x300.png 300w, ./../wp-content/uploads/2018/10/ephraim-150x150.png 150w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Ephraim Guful</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Behaviour Technician</p>
-
-		</div>
-	</div>
-</div></div></div>
-
-
-<div class="vc_row wpb_row vc_row-fluid ">
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/Abigail.png" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="Abigail" srcset="./../wp-content/uploads/2018/10/Abigail.png 422w, ./../wp-content/uploads/2018/10/Abigail-300x300.png 300w, ./../wp-content/uploads/2018/10/Abigail-150x150.png 150w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Abigail Yilla</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Support Aide</p>
-
-		</div>
-	</div>
-</div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_center">
-		<div class="wpb_wrapper">
-			
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/Blessing-1-1.png" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="Blessing-1 (1)" srcset="./../wp-content/uploads/2018/10/Blessing-1-1.png 422w, ./../wp-content/uploads/2018/10/Blessing-1-1-300x300.png 300w, ./../wp-content/uploads/2018/10/Blessing-1-1-150x150.png 150w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Blessing Ogar</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Support Aide</p>
-
-		</div>
-	</div>
-</div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_left">
-		<div class="wpb_wrapper">
-			
-			<!-- <div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/Abigail.png" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="Abigail" srcset="./../wp-content/uploads/2018/10/Abigail.png 422w, ./../wp-content/uploads/2018/10/Abigail-300x300.png 300w, ./../wp-content/uploads/2018/10/Abigail-150x150.png 150w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Abigail Yilla</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Support Aide</p> -->
-
-		</div>
-	</div>
-</div></div></div>
-</div>
-<div class="vc_row wpb_row vc_row-fluid ">
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
-	<div class="wpb_single_image wpb_content_element vc_align_center">
-		<div class="wpb_wrapper">
-			
-			<!-- <div class="vc_single_image-wrapper   vc_box_border_grey"><img loading="lazy" decoding="async" width="422" height="422" src="./../wp-content/uploads/2018/10/Blessing-1-1.png" class="vc_single_image-img attachment-full" alt=", The Zeebah Foundation" title="Blessing-1 (1)" srcset="./../wp-content/uploads/2018/10/Blessing-1-1.png 422w, ./../wp-content/uploads/2018/10/Blessing-1-1-300x300.png 300w, ./../wp-content/uploads/2018/10/Blessing-1-1-150x150.png 150w" sizes="(max-width: 422px) 100vw, 422px"></div>
-		</div>
-	</div>
-<h2 style="text-align: center;font-family:Shadows Into Light Two;font-weight:400;font-style:normal" class="vc_custom_heading">Blessing Ogar</h2>
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<p style="text-align: center;">Support Aide</p> -->
-
-		</div>
-	</div>
-</div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div>
-</div>
-<div class="vc_row wpb_row vc_row-fluid ">
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div>
-</div>
-<section class="vc_section"><div class="vc_row wpb_row vc_row-fluid ">
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div>
-</div>
-<div class="vc_row wpb_row vc_row-fluid ">
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div>
-</div></section>
-</div></div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="gap-60"></div>
-			  	<div class="col-md-12 no-padding">
-									</div> 		
-				
-
-			
+ <div class="container py-5">
+        <h2 class="text-center mb-4" style="color: #515151;"><br>STAFF MEMBERS</h2>
+        <div class="staff-container">
+          
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2018/10/OLUWADAMILOLA-OLUKITIBI.jpg" alt="Oluwadamilola Alawode">
+                <h3>Oluwadamilola Alawode</h3>
+                <p>Registered Behaviour Technician<br>
+                   Qualified Autism Service Practitioner-Supervisor<br>
+                   International Behavior Analyst<br>
+                   Clinical Supervisor</p>
+            </div>
+          
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2018/10/TUNDE-ALAWODE.jpg" alt="Babatunde Alawode">
+                <h3>Babatunde Alawode</h3>
+                <p>Registered Behaviour Technician (RBT)</p>
+            </div>
+            
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2018/10/GODSFAVOUR-CHUKWUMA.jpg" alt="Godsfavour Chukwuma">
+                <h3>Godsfavour Chukwuma</h3>
+                <p>Applied Behavior Analysis Technician</p>
+            </div>
+           
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2020/08/CARINE-OGBE.jpg" alt="Carine Ogbe">
+                <h3>Carine Ogbe</h3>
+                <p>Behaviour Technician</p>
+            </div>
+         
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2020/08/SARATU-BUBA.jpg" alt="Saratu Buba">
+                <h3>Saratu Buba</h3>
+                <p>Behaviour Technician</p>
+            </div>
+           
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2020/08/ESTHER-OSAWU.jpg" alt="Esther Osawu">
+                <h3>Esther Osawu</h3>
+                <p>Accounting Officer</p>
+            </div>
+            
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2018/10/Victoria-1-1.png" alt="Victoria Eko">
+                <h3>Victoria Eko</h3>
+                <p>Behaviour Technician</p>
+            </div>
+           
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2018/10/jonathan.png" alt="Jonathan Agum">
+                <h3>Jonathan Agum</h3>
+                <p>Special Educator & Verbal Communication Therapist</p>
+            </div>
+           
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2023/07/Oghenetega-Akaphiare-1.png" alt="Oghenetega Akaphiare">
+                <h3>Oghenetega Akaphiare</h3>
+                <p>Speech and Language Assistant</p>
+            </div>
+         
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2018/10/ephraim.png" alt="Ephraim Guful">
+                <h3>Ephraim Guful</h3>
+                <p>Behaviour Technician</p>
+            </div>
+      
+            <div class="staff-card">
+                <img src="./../wp-content/uploads/2018/10/Blessing-1-1.png" alt="Blessing Ogar">
+                <h3>Blessing Ogar</h3>
+                <p>Support Aide</p>
+            </div>
+        </div>
+    </div>
 
 
-		<div class="gap-40"></div>
-		<div class="clearfix"></div>
-									 
-			</div>		
-		</div>
-	</div>
-</div>
+
+
+
 
 <div class="footer-bottom">
 	<div class="container">
