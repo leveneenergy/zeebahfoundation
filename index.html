@@ -260,6 +260,36 @@ h6 {
 
 
 
+/**** Two columns/donation animation***/
+
+ @keyframes arrowBounce {
+        0%, 100% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(5px);
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .row {
+            flex-direction: column;
+        }
+        .col-md-6 {
+            width: 100%;
+        }
+        .text-content {
+            text-align: center;
+        }
+        .image-container {
+            margin-top: 20px;
+        }
+    }
+
+
+
+
+
 </style>
 <style type="text/css" data-type="vc_custom-css">.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
 Margin-right:0;
@@ -523,30 +553,43 @@ Margin-right:0;
             <!-- Left Column - Text Content -->
             <div class="col-md-6 col-sm-12" style="padding: 20px; display: flex; flex-direction: column; justify-content: center;">
                 <div class="text-content">
-                    <h3 style="color: #1c57a1; margin-bottom: 20px;">Jean-Claude Havyarimana Runs Comrades Marathon 2025</h3>
-                    <p style="color: #000000; font-size: 16px; line-height: 1.6;">
-                        Longstanding Friend of The Zeebah Foundation, ardent marathon racer and autism advocate Jean-Claude Havyarimana will tackle one of the world's most challenging ultra-marathons, the iconic Comrades Marathon 2025 in Durban, South Africa on 8th June 2025.
+                    <!-- Thank You Image -->
+                    <img src="t./../wp-content/uploads/2018/10/thankyou.png" alt="Thank You" style="max-width: 100%; margin-bottom: 20px;">
+                    
+                    <!-- Thank You Message -->
+                    <p style="color: #000000; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+                        Jean-Claude Havyarimana and every donor who gave to support our dream.
+                        <br><br>
+                        Your support is bringing us one step closer to building a purpose-built facility for children with autism at The Zeebah Foundation.
+                        <br><br>
+                        Donations are still welcome
                     </p>
-                    <p style="color: #000000; font-size: 16px; line-height: 1.6;">
-                        This legendary 90-kilometer ultra-marathon "The Ultimate Human Race" themed <em>More Than A Race</em> marks his 47th marathon as he runs to raise funds for The Zeebah Foundation's purpose-built facility for children with autism.
-                    </p>
-					<a class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-rounded vc_btn3-style-flat vc_btn3-color-sky" href="https://drive.google.com/file/d/1nYMo03fQF7pFuqlfUdqJZj5IjLD_OczD/view?usp=drive_link" title="">Download the Press Release</a>
-					
+                    
+                    <!-- Continue to Support with Arrow Animation -->
+                    <div style="margin-top: 20px;">
+                        <a href="buildingproject/index.html" style="display: inline-block; color: #1c57a1; font-weight: bold; text-decoration: none; font-size: 18px; position: relative; padding-right: 30px;">
+                            Please continue to support this dream
+                            <span style="position: absolute; right: 0; animation: arrowBounce 1s infinite;">
+                                >>> 
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <!-- Right Column - Video -->
+            <!-- Right Column - Image -->
             <div class="col-md-6 col-sm-12" style="padding: 20px;">
-                <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-                    <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                        <source src="./wp-content/uploads/2024/05/Countdown Day 3.mp4" type="video/mp4">
-                    </video>
+                <div class="image-container" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden;">
+                    <img src="t./../wp-content/uploads/2018/10/supportus.png" alt="Support Us" style="width: 100%; height: auto; display: block;">
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <!-----Two Column Section Ends ---->
+
+
 
 
 
